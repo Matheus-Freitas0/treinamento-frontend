@@ -1,0 +1,55 @@
+/*
+Exercícios Práticos
+1. Crie uma regra CSS que altere a cor de fundo do corpo da página para azul e
+a cor do texto para branco.
+2. Utilize seletores de classe para estilizar três elementos diferentes com
+diferentes tamanhos de fonte.
+3. Crie uma caixa com 200px de largura, 200px de altura, 10px de padding,
+5px de borda e 20px de margem.
+4. Estilize uma lista não ordenada utilizando Flexbox para alinhar os itens ao
+centro.
+5. Explique a diferença entre margin e padding no modelo de caixa.
+*/
+
+body {
+    background-color: blue; /* Define a cor de fundo da página como azul */
+    color: white; /* Define a cor do texto como branco */
+    font-family: Arial, Helvetica, sans-serif; /* Define as fontes usadas no texto: Arial como principal, Helvetica como secundária, e sans-serif como genérica */
+}
+
+table {
+    font-size: 24px; /* Define o tamanho da fonte das tabelas para 24px */
+    text-align: justify; /* Alinha o texto nas células da tabela de forma justificada, distribuindo o texto uniformemente entre as margens */
+}
+
+ul {
+    display: flex; /* Define o layout da lista como flexbox, permitindo alinhamento flexível dos itens */
+    justify-content: center; /* Alinha os itens da lista ao centro do container */
+    list-style-type: none; /* Remove os marcadores (pontos, números) da lista não ordenada */
+    padding: 0px; /* Remove o espaçamento interno da lista */
+}
+
+ul li {
+    margin: 0 10px; /* Define uma margem horizontal de 10px em ambos os lados dos itens da lista, separando-os uns dos outros */
+}
+
+h1 {
+    font-size: 40px; /* Define o tamanho da fonte para os títulos `<h1>` como 40px */
+    text-align: center; /* Alinha o texto dos títulos `<h1>` ao centro */
+}
+
+img {
+    width: 200px; /* Define a largura das imagens como 200px */
+    height: 200px; /* Define a altura das imagens como 200px */
+    border: 5px solid #000; /* Adiciona uma borda de 5px de espessura */
+    margin: 5px; /* Define uma margem de 5px ao redor das imagens, separando-as de outros elementos */
+}
+
+.box {
+    width: 200px; /* Define a largura da caixa como 200px */
+    height: 200px; /* Define a altura da caixa como 200px */
+    padding: 1px; /* Define um preenchimento interno de 1px ao redor do conteúdo da caixa */
+    border: 3px solid black; /* Adiciona uma borda de 3px de espessura, com cor preta, ao redor da caixa */
+    margin: 5px; /* Define uma margem de 5px ao redor da caixa, separando-a de outros elementos */
+    background-color: lightgrey; /* Define a cor de fundo da caixa como cinza claro */
+}
