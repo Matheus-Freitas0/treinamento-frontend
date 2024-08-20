@@ -13,7 +13,7 @@
             width: 300px;
             height: 150px;
             background-color: blue;
-            background-image: url('imagem-de-fundo.jpg'); /* Substitua pela URL da sua imagem */
+            background-image: url('imagem-de-fundo.jpg'); /* imagem */
             background-repeat: no-repeat;
             padding: 20px;
             border: 5px solid black;
