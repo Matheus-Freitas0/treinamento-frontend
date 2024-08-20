@@ -1,0 +1,84 @@
+        /* Exemplo 1: Div com largura, altura, padding, borda e margem específicos */
+        .box {
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 10px;
+            background-color: lightgray;
+        }
+
+        /* Exemplo 2: Div com cor de fundo azul e imagem de fundo */
+        .background-box {
+            width: 300px;
+            height: 150px;
+            background-color: blue;
+            background-image: url('imagem-de-fundo.jpg'); /* Substitua pela URL da sua imagem */
+            background-repeat: no-repeat;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 10px;
+        }
+
+        /* Exemplo 3: Layout básico usando display */
+        .block {
+            display: block;
+            width: 100%;
+            background-color: lightgray;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        .inline {
+            display: inline;
+            background-color: lightcoral;
+            padding: 10px;
+            margin: 5px;
+        }
+        .inline-block {
+            display: inline-block;
+            background-color: lightgreen;
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        /* Exemplo 4: Ocultar e mostrar elemento */
+        .hidden {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+
+        /* Exemplo 5: Layout de página usando Grid Layout */
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "nav content"
+                "footer footer";
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+        }
+        .header {
+            grid-area: header;
+            background-color: lightblue;
+            padding: 10px;
+        }
+        .nav {
+            grid-area: nav;
+            background-color: lightcoral;
+            padding: 10px;
+        }
+        .content {
+            grid-area: content;
+            background-color: lightgreen;
+            padding: 10px;
+        }
+        .footer {
+            grid-area: footer;
+            background-color: lightgray;
+            padding: 10px;
+        }
