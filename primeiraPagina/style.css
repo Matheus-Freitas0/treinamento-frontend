@@ -82,9 +82,144 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.perfil-imagem {
-    width: 100px;
-    height: auto;
+.perfil{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.perfil p {
+    font-size: 24px;
+}
+.imagem-perfil {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    border: 2px solid #1e88e5; 
+    border: 3px solid #ddd;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.carrossel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px; 
+    margin: auto;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: 400px; 
+    object-fit: cover; 
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.ideiasProjetos h3{
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.ideiasProjetos{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 768px) {
+    .perfil {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .perfil p {
+        font-size: 20px;
+    }
+
+    .imagem-perfil {
+        width: 120px;
+        height: 120px;
+    }
+
+    header nav ul li {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    header nav ul li a {
+        font-size: 18px;
+    }
+
+    section {
+        margin: 10px;
+    }
+
+    section table {
+        font-size: 14px;
+    }
+
+    .slides img {
+        height: 300px;
+    }
+
+    .ideiasProjetos h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    .perfil p {
+        font-size: 18px;
+    }
+
+    .imagem-perfil {
+        width: 100px;
+        height: 100px;
+    }
+
+    .slides img {
+        height: 250px;
+    }
+
+    .ideiasProjetos h3 {
+        font-size: 18px;
+    }
 }
