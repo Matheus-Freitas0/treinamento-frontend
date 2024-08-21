@@ -81,6 +81,14 @@ legend {
     margin-bottom: 15px;
 }
 
+span {
+    font-size: 14px;
+    color: #999;
+    margin-top: 2px;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
 @media (max-width: 480px) {
     body {
         padding: 10px;
