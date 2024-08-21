@@ -65,12 +65,11 @@ section ul {
 section ul li {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     background-color: #fff;
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 15px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
