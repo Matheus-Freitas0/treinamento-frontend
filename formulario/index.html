@@ -5,52 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
 </head>
 <body>
     <h1>Preencha o formulário</h1>
     
-    <form action="#">
+    <form action="#" aria-labelledby="form-title">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name">
+        <input type="text" id="nome" name="nome" required aria-required="true" autocomplete="name" aria-invalid="false">
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email">
+        <input type="email" id="email" name="email" required aria-required="true" autocomplete="email" aria-invalid="false">
 
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required aria-required="true" autocomplete="tel">
+        <input type="tel" id="telefone" name="telefone" required aria-required="true" autocomplete="tel" aria-invalid="false">
 
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" pattern=".{8,}" title="A senha deve ter pelo menos 8 caracteres" required aria-required="true">
+        <input type="password" id="senha" name="senha" pattern=".{8,}" title="A senha deve ter pelo menos 8 caracteres" required aria-required="true" aria-describedby="senha-desc">
+        <span id="senha-desc">A senha deve ter pelo menos 8 caracteres</span>
 
         <label for="mensagem">Mensagem:</label>
-        <textarea name="mensagem" id="mensagem" cols="50" rows="2"></textarea>
+        <span id="mensagem-label">Insira sua mensagem aqui</span>
+        <textarea name="mensagem" id="mensagem" cols="50" rows="2" aria-labelledby="mensagem-label"></textarea>
 
         <label for="pais">País:</label>
-        <select name="pais" id="pais">
+        <select name="pais" id="pais" aria-label="País de origem">
             <option value="brasil">Brasil</option>
             <option value="eua">Estados Unidos</option>
             <option value="japao">Japão</option>
         </select>
 
-        <fieldset>
-            <legend>Sexo:</legend>
+        <fieldset aria-labelledby="sexo-label">
+            <legend id="sexo-label">Sexo:</legend>
             <label for="feminino">Feminino</label>
-            <input type="radio" name="sexo" id="feminino" value="feminino">
+            <input type="radio" name="sexo" id="feminino" value="feminino" aria-checked="false">
 
             <label for="masculino">Masculino</label>
-            <input type="radio" name="sexo" id="masculino" value="masculino">
+            <input type="radio" name="sexo" id="masculino" value="masculino" aria-checked="false">
 
             <label for="outro">Outro</label>
-            <input type="radio" name="sexo" id="outro" value="outro">
+            <input type="radio" name="sexo" id="outro" value="outro" aria-checked="false">
         </fieldset>
 
         <div>
             <label for="termos">Aceito os termos de uso</label> 
-            <input type="checkbox" name="termos" id="termos" value="termos" required aria-required="true">
+            <input type="checkbox" name="termos" id="termos" value="termos" required aria-required="true" aria-describedby="termos-desc">
+            <span id="termos-desc">Aceitar os termos é obrigatório</span>
         </div>
 
-        <button type="reset">Limpar</button>
-        <button type="submit">Enviar</button>
+        <button type="reset" aria-label="Limpar formulário"><i class="fas fa-eraser"></i> Limpar</button>
+        <button type="submit" aria-label="Enviar formulário"><i class="fas fa-paper-plane"></i> Enviar</button>
     </form>
 </body>
 </html>
