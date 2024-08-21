@@ -6,21 +6,21 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7fa; 
+    background-color: #f4f7fa;
     margin: 0;
-    padding: 0 80px;
+    padding: 0 5px;
 }
 
 header {
-    background: #4cac4c; 
+    background: #4cac4c;
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    border-radius: 15px;
 }
 
 header h1 {
     margin-bottom: 10px;
+    font-size: 2em;
 }
 
 header nav ul {
@@ -36,45 +36,28 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-size: 1.1em;
 }
 
 header nav ul li a:hover {
     color: #f0f0f0;
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-section h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
-}
-
-section ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-section ul li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 25px; 
+main {
+    margin: 20px 0;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    max-width: 5000px;
+    margin: 0 auto;
 }
 
 label {
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333; 
+    color: #333;
 }
 
 input, button {
@@ -85,22 +68,21 @@ input, button {
 }
 
 input:focus {
-    border-color: #4cac4c; 
+    border-color: #4cac4c;
     outline: 3px solid rgba(76, 172, 76, 0.5);
     box-shadow: 0 0 8px rgba(76, 172, 76, 0.5);
 }
 
 button {
-    font-size: 20px;
-    background-color: #4cac4c; 
+    background-color: #4cac4c;
     color: #fff;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #3d9b3d; 
+    background-color: #3d9b3d;
     box-shadow: 0 0 5px rgba(76, 172, 76, 0.3);
     transform: scale(1.05);
 }
@@ -108,9 +90,8 @@ button:hover {
 footer {
     text-align: center;
     padding: 10px 0;
-    background: #4cac4c; 
+    background: #4cac4c;
     color: #fff;
-    border-radius: 15px;
+    bottom: 0;
+    width: 100%;
 }
-
-   
