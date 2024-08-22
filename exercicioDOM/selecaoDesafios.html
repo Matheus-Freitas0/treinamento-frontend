@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção</title>
+</head>
+<body>
+   <!--
+    1. Crie um arquivo chamado selecao_desafios.html e selecione um elemento pelo
+    ID, modifique seu conteúdo e exiba o resultado no console. 🎯
+   
+    2. Selecione todos os elementos com uma classe específica e modifique seu
+    estilo (por exemplo, altere a cor do texto). 🎨
+    
+    3. Use querySelector para selecionar um elemento específico e adicione uma
+    nova classe a ele. ✨
+    
+    4. Use querySelectorAll para selecionar todos os elementos de uma tag
+    específica e altere seu conteúdo. 🖋
+    
+    5. Combine seletores CSS em querySelector para selecionar elementos de
+    maneira mais precisa (por exemplo, selecione um elemento com uma classe
+    específica dentro de um determinado ID).-->
+    <div id="selecionado">
+        <h1 class="texto-principal">Texto inicial</h1>
+    </div>
+
+    <p class="texto">texto 1</p>
+    <p class="texto">texto 2</p>
+    <p class="texto">texto 3</p>
+    <ul>
+        <li>abc</li>
+        <li>123</li>
+        <li>+-=</li>
+    </ul>
+</body>
+
+<script>
+    // 1. Selecionar o elemento pelo ID
+    let elementoPorId = document.getElementById('selecionado')
+    elementoPorId.innerText = 'Texto modificado pelo JavaScript'
+    console.log(elementoPorId)
+    
+    // 2. Selecionar todos os elementos com uma classe
+
+    let texto = document.getElementsByClassName('texto')
+    for (let i = 0; i < texto.length; i++) {
+        texto[i].style.color ='red'
+    }
+    
+    //3 querySelector para selecionar um elemento específico
+    let elemento = document.querySelector('#selecionado')
+    elemento.classList.add('texto-principal')
+    
+    //4 querySelectorAll para selecionar todos os elementos de uma tag específica
+    let listaElementos = document.querySelectorAll('li')
+    for (let i = 0; i < listaElementos.length; i++) {
+        listaElementos[i].innerText = 'Texto alterado pelo JavaScript'
+    }
+    
+    //5 Combinar seletores CSS em querySelector
+    let elementoCombinado = document.querySelector('#selecionado.texto-principal')
+    elementoCombinado.style.color = 'blue'
+
+    </script>
+</html>
