@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Query Selector</title>
+ </head>
+ <body>
+ <p class="texto">Parágrafo 1</p>
+ <p class="texto">Parágrafo 2</p>
+ <script>
+ 
+ let primeiroParagrafo = document.querySelector('.texto');
+ console.log(primeiroParagrafo); // <p class="texto">Parágrafo 1</p>
+ 
+ let todosParagrafos = document.querySelectorAll('.texto');
+ console.log(todosParagrafos); // NodeList [ <p.texto>,<p.texto> ]
+ </script>
+ </body>
+</html>
