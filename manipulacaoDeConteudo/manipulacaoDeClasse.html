@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionando e Removendo Classes</title>
+<style>
+    .destacado {
+    color: red;
+    font-weight: bold;
+    }
+</style>
+</head>
+    <body>
+        <p id="paragrafo">Este é um parágrafo.</p>
+<script>
+    let paragrafo = document.getElementById("paragrafo")
+    paragrafo.classList.add("destacado");
+    console.log(paragrafo.classList); //  ["destacado"]
+    paragrafo.classList.remove("destacado");
+    console.log(paragrafo.classList); //  []
+    paragrafo.classList.toggle("destacado");
+    console.log(paragrafo.classList); //  ["destacado"]
+    paragrafo.classList.toggle("destacado");
+    console.log(paragrafo.classList); //  []
+</script>
+
+</body>
+</html>
