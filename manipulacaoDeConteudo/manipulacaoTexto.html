@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificando Conteúdo de Texto</title>
+</head>
+<body>
+    <h1 id="titulo">Bem-vindo</h1>
+    <p id="descricao">Este é um parágrafo.</p>
+
+    <script>
+        let titulo = document.getElementById('titulo');
+        titulo.textContent = 'Ola mundo!!'
+
+        let descricao = document.getElementById('descricao');
+        descricao.innerHTML = '<strong>Este é um <em>parágrafo</em> em negrito.</strong>'
+    </script>
+
+</body>
+</html>
+
+
