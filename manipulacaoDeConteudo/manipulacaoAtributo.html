@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificando Atributos</title>
+</head>
+<body>
+    <img id="imagem" src="imagem1.jpg" alt="Imagem 1">
+<script>
+    let imagem = document.getElementById('imagem');
+    imagem.setAttributes('src', 'imagem2.jpg');
+    imagem.setAttribute('alt', 'Imagem 2');
+
+    imagem.src = 'imagem2.jpg'
+    imagem.alt = 'Imagem 2'
+</script>
+
+</body>
+</html>
