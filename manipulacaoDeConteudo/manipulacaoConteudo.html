@@ -8,6 +8,10 @@
 <body>
     <h1 id="titulo"> Olhe esta caixa</h1>
     <img id="imagem_caixa" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s" alt="caixa fechada">
+
+    <div>
+        <button onclick="mudarImagem()">Mudar Imagem</button>
+    </div>
 </body>
     <script>
     let caixa = document.getElementById('imagem_caixa')
@@ -21,5 +25,9 @@
     texto_h1.style.fontFamily = "Arial"
     texto_h1.style.fontSize = "40px"
 
+    function mudarImagem() {
+        caixa.setAttribute("src" , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s")
+        caixa.setAttribute('alt', "caixa fechada")
+    }
     </script>
 </html>
