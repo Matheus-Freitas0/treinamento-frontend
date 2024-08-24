@@ -26,8 +26,12 @@
     texto_h1.style.fontSize = "40px"
 
     function mudarImagem() {
-        caixa.setAttribute("src" , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s")
-        caixa.setAttribute('alt', "caixa fechada")
+      const imagem = document.getElementById('imagem')
+      if (imagem.src.includes("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s")) {
+        imagem.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s"
+      } else {
+        imagem.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4KgqErJxUJTm7OVOLDZ-uI0wJn7TwnkyDFA&s"
+      }
     }
     </script>
 </html>
