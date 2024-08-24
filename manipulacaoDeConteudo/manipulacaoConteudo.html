@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulção de conteudo</title>
+</head>
+<body>
+    <h1 id="titulo"> Olhe esta caixa</h1>
+    <img id="imagem_caixa" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZjHuMfoajRlvXPuPkpyhAhu9vNJu-SuIzCg&s" alt="caixa fechada">
+</body>
+    <script>
+    let caixa = document.getElementById('imagem_caixa')
+    caixa.setAttribute("src" , "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4KgqErJxUJTm7OVOLDZ-uI0wJn7TwnkyDFA&s")
+    caixa.setAttribute('alt', "caixa aberta")
+
+    let texto_h1 = document.getElementById('titulo')
+    texto_h1.innerText = "Olá, essa caixa está aberta!"
+    console.log(caixa)
+    </script>
+</html>
