@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Definindo Múltiplos Estilos</title>
+ <style>
+ #paragrafo {
+ transition: all 0.5s;
+}
+ </style>
+ </head>
+ <body>
+ <p id="paragrafo">Este é um parágrafo estilizado.</p>
+ <button id="botaoEstilos">Alterar Estilos</button>
+ <script>
+ let paragrafo = document.getElementById('paragrafo');
+ let botaoEstilos = document.getElementById('botaoEstilos');
+ botaoEstilos.addEventListener('click', function() {
+ paragrafo.style.cssText = 'color: green; font-size: 25px; background-color: lightyellow;';
+});
+ </script>
+ </body>
+</html>
