@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Eventos Comuns</title>
+ </head>
+ <body>
+ 
+<button id="botaoClique">Clique em mim!</button>
+ <p id="texto">Passe o mouse aqui!</p>
+ <input id="campoTexto" type="text" placeholder="Digite algo...">
+
+<script>
+ 
+ let botao = document.getElementById('botaoClique');
+ let texto = document.getElementById('texto');
+ let campoTexto = document.getElementById('campoTexto');
+ 
+ // Evento de clique
+ botao.addEventListener('click', function() {
+ alert('Botão clicado!');
+ });
+ 
+ // Evento de mouseover
+ texto.addEventListener('mouseover', function() {
+ texto.style.color = 'blue';
+ });
+ 
+ // Evento de mouseout
+ texto.addEventListener('mouseout', function() {
+ texto.style.color = 'black';
+ });
+ 
+ // Evento de keydown
+ campoTexto.addEventListener('keydown', function(event){
+ console.log('Tecla pressionada: ' + event.key);
+ });
+
+ // Evento de keyup
+ campoTexto.addEventListener('keyup', function(event) {
+ console.log('Tecla liberada: ' + event.key);
+ });
+ </script>
+
+</body>
+</html>
