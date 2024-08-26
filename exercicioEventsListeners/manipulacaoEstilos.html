@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manipulação de estilo</title>
+    <style>
+        .style1 {
+            background-color: lightblue;
+            color: black;
+        }
+        .style2 {
+            background-color: darkblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!--    
+     Use classList.toggle para alternar entre duas classes de estilo ao clicar em
+    um botão. ✨
+    
+     Crie uma função que altera múltiplos estilos de um elemento ao clicar em
+    um botão, usando uma string CSS. -->
+    
+    <h1 class="style1" id="title">Este é um título</h1>
+    <button onclick="mudarEstilo()" id="mudarEstilo">Mudar estilo</button>
+
+    <div id="myElement">Styled Element</div>
+    <button id="changeStyleButton">Change Style</button>
+
+</body>
+<script>
+    let title = document.getElementById('title')
+    let mudarEstilo = document.getElementById('mudarEstilo')
+
+    mudarEstilo.addEventListener('click', function() {
+        title.classList.toggle('style1')
+        title.classList.toggle('style2')
+    })
+
+    const button = document.getElementById('changeStyleButton');
+        const element = document.getElementById('myElement');
+
+        button.addEventListener('click', () => {
+            element.style.cssText = `
+                background-color: coral;
+                color: white;
+                font-size: 20px;
+                padding: 10px;
+                border-radius: 5px;
+                `;
+        })
+</script>
+</html>
