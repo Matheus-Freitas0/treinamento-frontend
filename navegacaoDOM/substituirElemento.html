@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Substituindo Elementos</title>
+ </head>
+ <body>
+ <div id="container">
+    <p id="paragrafoOriginal">Parágrafo original</p>
+ </div>
+ <button id="substituir">Substituir Parágrafo</button>
+ <script>
+ let container = document.getElementById('container')
+ let botaoSubstituir = document.getElementById('substituir')
+ let paragrafoOriginal = document.getElementById('paragrafoOriginal')
+ 
+ botaoSubstituir.addEventListener('click', function() {
+ let novoParagrafo = document.createElement('p')
+ 
+ novoParagrafo.textContent = 'Parágrafo substituto!'
+ container.replaceChild(novoParagrafo, paragrafoOriginal)
+ });
+ </script>
+ </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Inserindo Elementos Antes</title>
+ </head>
+ <body>
+ <div id="container">
+ <p id="primeiro">Primeiro parágrafo</p>
+ <p id="segundo">Segundo parágrafo</p>
+ </div>
+ <button id="inserirAntes">Inserir Parágrafo Antes</button>
+ <script>
+ let container = document.getElementById('container');
+ let botaoInserirAntes = document.getElementById('inserirAntes');
+ let segundo = document.getElementById('segundo');
+ botaoInserirAntes.addEventListener('click', function()
+{
+ let novoParagrafo = document.createElement('p');
+ novoParagrafo.textContent = 'Parágrafo inserido antes do segundo!';
+ container.insertBefore(novoParagrafo, segundo);
+ });
+ </script>
+ </body>
+</html>
