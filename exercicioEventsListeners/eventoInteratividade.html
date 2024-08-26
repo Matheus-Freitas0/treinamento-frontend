@@ -40,6 +40,7 @@ validação dos campos. �
     <label for="textInput">Digite algo:</label>
     <input type="text" id="textInput" placeholder="Comece a digitar...">
     <div id="charCount">Caracteres digitados: 0</div>
+    <button id="enviar" type="submit">Enviar</button>
 
     <script>
         let botaoParagrafo = document.getElementById ("botaoClick")
@@ -47,13 +48,14 @@ validação dos campos. �
         let paragrafoStyle = document.getElementById("botaoAlterar")
         let imagem = document.getElementById('imagem')
         let contadorCaracteres = document.getElementById('texto')
-        const textInput = document.getElementById('textInput');
+        const texto = document.getElementById('textInput');
         const charCount = document.getElementById('charCount');
+        let botaoEnviar = document.getElementById('enviar')
         
-        //1 
-        botaoParagrafo.addEventListener('click', function(){
-            let texto = paragrafo.textContent
-        paragrafo.textContent = 'Texto alterado!' + texto
+    //1 
+    botaoParagrafo.addEventListener('click', function(){
+        let texto = paragrafo.textContent
+    paragrafo.textContent = 'Texto alterado!' + texto
     })
     //2
     imagem.addEventListener('mouseover' , function(){
@@ -68,11 +70,9 @@ validação dos campos. �
     //3
 
     function updateCharCount() {
-        charCount.textContent = `Caracteres digitados: ${textInput.value.length}`;
+        charCount.textContent = `Caracteres digitados: ${texto.value.length}`;
     }
-
-    textInput.addEventListener('input', updateCharCount);
-
+    texto.addEventListener('input', updateCharCount);
     updateCharCount();
 
     //4
@@ -80,7 +80,11 @@ validação dos campos. �
         paragrafo.style.background = 'black';
         paragrafo.style.color = 'red';
     })
+
     //5
+    botaoEnviar.addEventListener('click', function(){
+        alert('Formulário enviado com sucesso!');
+    })
     </script>
 
 </body>
