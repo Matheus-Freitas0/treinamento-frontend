@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegação DOM</title>
+</head>
+<body>
+    <!--
+    1. Crie um arquivo chamado navegacao_dom.html e acesse o elemento pai de um
+    parágrafo, alterando seu estilo. 🌳
+
+    2. Acesse todos os elementos filhos de um div e altere seu conteúdo de texto.
+
+    3. Implemente a navegação entre elementos irmãos, alterando o estilo do
+    próximo e do anterior ao clicar em um botão. 🔄
+
+    4. Crie uma função que adicione novos elementos ao DOM e outra que remova
+    elementos existentes ao clicar em botões. 🛠
+
+    5. Combine várias manipulações (acesso a pai, filhos, irmãos) em uma função
+    que altera a estrutura do DOM dinamicamente.
+    -->
+
+    <p id="paragrafo">Este é um parágrafo.</p>
+
+    <div id="divPai">
+        <p id="filho1">Filho 1</p>
+        <p id="filho2">Filho 2</p>
+    </div>
+
+    <button id="adicionarFilho">Adicionar Filho</button>
+    <button id="removerFilho">Remover Filho</button>
+    <button id="alterarEstiloIrmãos">Alterar Estilo dos Irmãos</button>
+
+    <script>
+        // 1. Acesse o elemento pai do parágrafo e altere seu estilo
+        const paragrafo = document.getElementById("paragrafo");
+        paragrafo.style.color = "red";
+        paragrafo.style.fontSize = "24px";
+        paragrafo.style.backgroundColor = "yellow";
+
+        // 2. Acesse todos os elementos filhos da div e altere seu conteúdo de texto
+        const divPai = document.getElementById("divPai");
+        const filhos = divPai.children;
+        Array.from(filhos).forEach(filho => {
+            filho.textContent = "Novo texto";
+        });
+
+        // 3. Navegação entre elementos irmãos
+        const alterarEstiloIrmaos = () => {
+            const filho1 = document.getElementById("filho1");
+            const filho2 = document.getElementById("filho2");
+            if (filho1 && filho2) {
+                filho1.style.color = "blue";
+                filho2.style.color = "green";
+            }
+        };
+
+        document.getElementById("alterarEstiloIrmãos").addEventListener("click", alterarEstiloIrmaos);
+
+        // 4. Função para adicionar e remover elementos
+        const adicionarFilho = () => {
+            const novoFilho = document.createElement("p");
+            novoFilho.textContent = "Novo Filho";
+            divPai.appendChild(novoFilho);
+        };
+
+        const removerFilho = () => {
+            const filhos = divPai.children;
+            if (filhos.length > 0) {
+                divPai.removeChild(filhos[filhos.length - 1]);
+            }
+        };
+
+        document.getElementById("adicionarFilho").addEventListener("click", adicionarFilho);
+        document.getElementById("removerFilho").addEventListener("click", removerFilho);
+
+        // 5. Função que combina várias manipulações
+        const manipularDOM = () => {
+            // Acessa o pai do parágrafo e altera o estilo
+            divPai.style.border = "2px solid black";
+            
+            // Altera o conteúdo dos filhos
+            Array.from(divPai.children).forEach(filho => {
+                filho.textContent = "Texto alterado";
+            });
+
+            // Adiciona um novo filho
+            adicionarFilho();
+
+            // Altera o estilo dos irmãos
+            alterarEstiloIrmaos();
+        };
+
+        // Exemplo de como chamar a função de manipulação do DOM
+        manipularDOM();
+    </script>
+</body>
+</html>
