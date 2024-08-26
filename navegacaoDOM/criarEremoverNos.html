@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Criando e Removendo Nós</title>
+ </head>
+ <body>
+ <div id="container">
+ <p>Parágrafo existente</p>
+ </div>
+ <button id="adicionar">Adicionar Parágrafo</button>
+ <button id="remover">Remover Parágrafo</button>
+ <script>
+ let container = document.getElementById('container');
+ let botaoAdicionar = document.getElementById('adicionar');
+ let botaoRemover = document.getElementById('remover');
+
+ botaoAdicionar.addEventListener('click', function() { 
+ let novoParagrafo = document.createElement('p');
+    novoParagrafo.textContent = 'Novo parágrafo';
+    container.appendChild(novoParagrafo);
+ });
+
+ botaoRemover.addEventListener('click', function() {
+ let ultimoParagrafo = container.lastElementChild;
+    if (ultimoParagrafo) {
+    container.removeChild(ultimoParagrafo);
+    }
+ });
+ </script>
+ </body>
+</html>

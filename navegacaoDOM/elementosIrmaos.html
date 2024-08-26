@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Acessando Elementos Irmãos</title>
+ </head>
+ <body>
+ <p id="primeiro">Primeiro parágrafo</p>
+ <p id="segundo">Segundo parágrafo</p>
+ <p id="terceiro">Terceiro parágrafo</p>
+ <script>
+ let primeiro = document.getElementById('primeiro');
+ let segundo = primeiro.nextElementSibling;
+ let terceiro = segundo.nextElementSibling;
+ console.log(segundo); // <p id="segundo">Segundo parágrafo</p>
+ console.log(terceiro); // <p id="terceiro">Terceiro parágrafo</p>
+ </script>
+ </body>
+</html>

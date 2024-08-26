@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Acessando Elementos Filhos</title>
+ </head>
+ <body>
+ <div id="pai">
+ <p>Filho 1</p>
+ <p>Filho 2</p>
+ <p>Filho 3</p>
+ </div>
+ <script>
+ let pai = document.getElementById('pai');
+ let filhos = pai.children;
+ console.log(filhos); // HTMLCollection [ <p>, <p>, <p>]
+ </script>
+ </body>
+</html>

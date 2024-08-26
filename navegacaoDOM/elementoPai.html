@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Acessando Elementos Pai</title>
+ </head>
+ <body>
+ 
+    <div id="pai">
+    <p id="filho">Este é um parágrafo.</p>
+ 
+</div>
+ <script>
+ 
+ let filho = document.getElementById('filho');
+ let pai = filho.parentNode;
+ 
+ console.log(pai); // <div id="pai">...</div>
+ 
+ </script>
+ </body>
+</html>
