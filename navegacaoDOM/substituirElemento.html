@@ -1,24 +1,85 @@
 <!DOCTYPE html>
-<html>
- <head>
- <title>Substituindo Elementos</title>
- </head>
- <body>
- <div id="container">
-    <p id="paragrafoOriginal">Parágrafo original</p>
- </div>
- <button id="substituir">Substituir Parágrafo</button>
- <script>
- let container = document.getElementById('container')
- let botaoSubstituir = document.getElementById('substituir')
- let paragrafoOriginal = document.getElementById('paragrafoOriginal')
- 
- botaoSubstituir.addEventListener('click', function() {
- let novoParagrafo = document.createElement('p')
- 
- novoParagrafo.textContent = 'Parágrafo substituto!'
- container.replaceChild(novoParagrafo, paragrafoOriginal)
- });
- </script>
- </body>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação e Remoção de Elementos</title>
+    <style>
+        #container {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+        }
+        .item {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #000;
+            background-color: #f4f7fa;
+        }
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manipulação Dinâmica de Elementos</h1>
+    <button onclick="adicionarElemento()">Adicionar Elemento</button>
+    <button onclick="removerUltimoElemento()">Remover Último Elemento</button>
+    <button onclick="inserirAntes()">Inserir Antes de um Elemento Específico</button>
+    <button onclick="substituirElemento()">Substituir um Elemento Existente</button>
+    
+    <div id="container">
+        <div class="item">Elemento 1</div>
+        <div class="item">Elemento 2</div>
+        <div class="item">Elemento 3</div>
+    </div>
+
+    <script>
+        function adicionarElemento() {
+            const container = document.getElementById('container');
+            const novoElemento = document.createElement('div');
+            novoElemento.className = 'item';
+            novoElemento.textContent = `Elemento ${container.children.length + 1}`;
+            container.appendChild(novoElemento);
+        }
+
+        function removerUltimoElemento() {
+            const container = document.getElementById('container');
+            if (container.children.length > 0) {
+                container.removeChild(container.lastChild);
+            } else {
+                alert('Não há elementos para remover.');
+            }
+        }
+
+        function inserirAntes() {
+            const container = document.getElementById('container');
+            const novoElemento = document.createElement('div');
+            novoElemento.className = 'item';
+            novoElemento.textContent = 'Novo Elemento Inserido';
+            
+            // Inserir antes do primeiro elemento
+            if (container.children.length > 0) {
+                container.insertBefore(novoElemento, container.firstChild);
+            } else {
+                container.appendChild(novoElemento);
+            }
+        }
+
+        function substituirElemento() {
+            const container = document.getElementById('container');
+            const novoElemento = document.createElement('div');
+            novoElemento.className = 'item';
+            novoElemento.textContent = 'Elemento Substituto';
+            
+            // Substituir o primeiro elemento
+            if (container.children.length > 0) {
+                container.replaceChild(novoElemento, container.firstChild);
+            } else {
+                container.appendChild(novoElemento);
+            }
+        }
+    </script>
+</body>
 </html>
