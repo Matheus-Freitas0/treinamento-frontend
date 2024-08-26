@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <title>Removendo Event Listeners</title>
+ </head>
+ <body>
+ <button id="botaoAdicionar">Adicionar Listener</button>
+ <button id="botaoRemover">Remover Listener</button>
+ <button id="meuBotao">Clique em mim!</button>
+ 
+<script>
+ let botaoAdicionar = document.getElementById('botaoAdicionar');
+ let botaoRemover = document.getElementById('botaoRemover');
+ let meuBotao = document.getElementById('meuBotao');
+
+function mostrarAlerta() {
+ alert('Botão clicado!');
+}
+
+// Adiciona o listener
+botaoAdicionar.addEventListener('click', function() {
+meuBotao.addEventListener('click', mostrarAlerta());
+});
+
+ // Remove o listener
+botaoRemover.addEventListener('click', function() {
+meuBotao.removeEventListener('click', mostrarAlerta());
+ });
+</script>
+</body>
+</html>
