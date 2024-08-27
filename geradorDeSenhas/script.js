@@ -7,23 +7,23 @@ document.getElementById("gerar").addEventListener("click", function () {
 
   if (comprimento <= 0) {
     document.getElementById('feedback').textContent = 'Comprimento inválido!';
-  return
+    return
   }
 
   if (!maiusculas && !minusculas && !numeros && !especiais) {
-  document.getElementById('feedback').textContent ="Selecione pelo menos uma opção!"
+    document.getElementById('feedback').textContent = "Selecione pelo menos uma opção!"
     return
   }
 
   let senha = gerarSenha(comprimento, maiusculas, minusculas, numeros, especiais)
-    document.getElementById('senha').textContent = senha
-    document.getElementById('feedback').textContent = 'Senha gerada com sucesso!'
+  document.getElementById('senha').textContent = senha
+  document.getElementById('feedback').textContent = 'Sua nova senha segura foi gerada com sucesso! Está pronta para uso.'
 })
 
-document.getElementById('copiar').addEventListener('click', function() {
-   let senha = document.getElementById('senha').textContent
-   navigator.clipboard.writeText(senha).then(function() {
-   document.getElementById('feedback').textContent = 'Senha copiada para a área de transferência!';
+document.getElementById('copiar').addEventListener('click', function () {
+  let senha = document.getElementById('senha').textContent
+  navigator.clipboard.writeText(senha).then(function () {
+    document.getElementById('feedback').textContent = 'Senha copiada para a área de transferência!';
   })
 })
 
