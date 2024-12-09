@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Choices.js</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <style>
+        .choices {
+            width: 200px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Escolha uma Cidade</h1>
+    <form id="cityForm">
+        <label for="cities">Cidades:</label>
+        <select id="cities" class="choices">
+            <option value="">Selecione uma cidade...</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="New York">New York</option>
+            <option value="Seattle">Seattle</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="Chicago">Chicago</option>
+        </select>
+        <input type="submit" value="Enviar" />
+    </form>
+
+    <script>
+        const choices = new Choices('#cities'); 
+
+        document.getElementById('cityForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const selectedCity = choices.getValue(true); 
+            alert('Você escolheu: ' + selectedCity[0].value);
+            
+        });
+    </script>
+
+</body>
+</html>
