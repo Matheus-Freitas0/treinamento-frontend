@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f0f9ff, #e2f3fc);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        main {
+            padding: 6rem 2rem 2rem;
+            width: 80%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #343a40;
+            font-size: 1.1rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #00796b;
+            box-shadow: 0 0 5px rgba(0, 121, 107, 0.3);
+        }
+
+        .form-group button {
+            background-color: #00796b;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 0.9rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .form-group button:hover {
+            background-color: #004d40;
+        }
+
+        .form-group button:disabled {
+            background-color: #b2dfdb;
+            cursor: not-allowed;
+        }
+
+        .form-group button svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .table-container {
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #00796b;
+            color: white;
+            font-weight: bold;
+        }
+
+        .action-btn {
+            background-color: #ffa000;
+            color: white;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .action-btn:hover {
+            background-color: #ff6f00;
+        }
+
+        .delete-btn {
+            background-color: #d32f2f;
+        }
+
+        .delete-btn:hover {
+            background-color: #c62828;
+        }
+
+        .edit-btn {
+            background-color: #0288d1;
+        }
+
+        .edit-btn:hover {
+            background-color: #0277bd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Admin Dashboard
+    </header>
+    <main>
+        <h2>Cadastro de Informações</h2>
+
+        <div class="form-group">
+            <label for="mesa">Número da Mesa:</label>
+            <input type="number" id="mesa" placeholder="Número da Mesa">
+            <button onclick="cadastrarMesa()" id="cadastrarMesaBtn"><i class="fas fa-plus"></i> Cadastrar Mesa</button>
+        </div>
+
+        <div class="form-group">
+            <label for="prato">Nome do Prato:</label>
+            <input type="text" id="prato" placeholder="Nome do Prato">
+            <button onclick="cadastrarPrato()" id="cadastrarPratoBtn"><i class="fas fa-utensils"></i> Cadastrar Prato</button>
+        </div>
+
+        <div class="form-group">
+            <label for="usuario">Nome do Usuário:</label>
+            <input type="text" id="usuario" placeholder="Nome do Usuário">
+            <button onclick="cadastrarUsuario()" id="cadastrarUsuarioBtn"><i class="fas fa-user-plus"></i> Cadastrar Usuário</button>
+        </div>
+
+        <div class="table-container">
+            <h2>Mesas Cadastradas</h2>
+            <table id="mesasTable">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Pratos Cadastrados</h2>
+            <table id="pratosTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Prato</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Usuários Cadastrados</h2>
+            <table id="usuariosTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Usuário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        let mesas = [];
+        let pratos = [];
+        let usuarios = [];
+
+        function cadastrarMesa() {
+            const mesa = document.getElementById("mesa").value;
+            if (mesa) {
+                mesas.push({ numero: mesa });
+                alert(`Mesa ${mesa} cadastrada com sucesso!`);
+                adicionarLinhaMesa(mesa);
+                document.getElementById("mesa").value = "";
+            } else {
+                alert("Por favor, insira um número de mesa.");
+            }
+        }
+
+        function adicionarLinhaMesa(mesa) {
+            const table = document.getElementById("mesasTable").getElementsByTagName("tbody")[0];
+            const row = table.insertRow();
+            row.insertCell(0).textContent = mesa;
+            const actionsCell = row.insertCell(1);
+            actionsCell.innerHTML = `
+                <a href="#" class="action-btn edit-btn" onclick="editarMesa('${mesa}')"><i class="fas fa-edit"></i> Editar</a>
+                <a href="#" class="action-btn delete-btn" onclick="excluirMesa('${mesa}')"><i class="fas fa-trash-alt"></i> Excluir</a>
+            `;
+        }
+
+        function editarMesa(mesa) {
+            alert(`Editando a Mesa ${mesa}`);
+        }
+
+        function excluirMesa(mesa) {
+            const confirmDelete = confirm(`Deseja realmente excluir a Mesa ${mesa}?`);
+            if (confirmDelete) {
+                mesas = mesas.filter(m => m.numero !== mesa);
+                document.querySelector(`#mesasTable tbody tr td:contains("${mesa}")`).parentNode.remove();
+                alert(`Mesa ${mesa} excluída com sucesso!`);
+            }
+        }
+
+        function cadastrarPrato() {
+            const prato = document.getElementById("prato").value;
+            if (prato) {
+                pratos.push({ nome: prato });
+                alert(`Prato ${prato} cadastrado com sucesso!`);
+                adicionarLinhaPrato(prato);
+                document.getElementById("prato").value = "";
+            } else {
+                alert("Por favor, insira o nome do prato.");
+            }
+        }
+
+        function adicionarLinhaPrato(prato) {
+            const table = document.getElementById("pratosTable").getElementsByTagName("tbody")[0];
+            const row = table.insertRow();
+            row.insertCell(0).textContent = prato;
+            const actionsCell = row.insertCell(1);
+            actionsCell.innerHTML = `
+                <a href="#" class="action-btn edit-btn" onclick="editarPrato('${prato}')"><i class="fas fa-edit"></i> Editar</a>
+                <a href="#" class="action-btn delete-btn" onclick="excluirPrato('${prato}')"><i class="fas fa-trash-alt"></i> Excluir</a>
+            `;
+        }
+
+        function editarPrato(prato) {
+            alert(`Editando o Prato ${prato}`);
+        }
+
+        function excluirPrato(prato) {
+            const confirmDelete = confirm(`Deseja realmente excluir o prato ${prato}?`);
+            if (confirmDelete) {
+                pratos = pratos.filter(p => p.nome !== prato);
+                document.querySelector(`#pratosTable tbody tr td:contains("${prato}")`).parentNode.remove();
+                alert(`Prato ${prato} excluído com sucesso!`);
+            }
+        }
+
+        function cadastrarUsuario() {
+            const usuario = document.getElementById("usuario").value;
+            if (usuario) {
+                usuarios.push({ nome: usuario });
+                alert(`Usuário ${usuario} cadastrado com sucesso!`);
+                adicionarLinhaUsuario(usuario);
+                document.getElementById("usuario").value = "";
+            } else {
+                alert("Por favor, insira o nome do usuário.");
+            }
+        }
+
+        function adicionarLinhaUsuario(usuario) {
+            const table = document.getElementById("usuariosTable").getElementsByTagName("tbody")[0];
+            const row = table.insertRow();
+            row.insertCell(0).textContent = usuario;
+            const actionsCell = row.insertCell(1);
+            actionsCell.innerHTML = `
+                <a href="#" class="action-btn edit-btn" onclick="editarUsuario('${usuario}')"><i class="fas fa-edit"></i> Editar</a>
+                <a href="#" class="action-btn delete-btn" onclick="excluirUsuario('${usuario}')"><i class="fas fa-trash-alt"></i> Excluir</a>
+            `;
+        }
+
+        function editarUsuario(usuario) {
+            alert(`Editando o Usuário ${usuario}`);
+        }
+
+        function excluirUsuario(usuario) {
+            const confirmDelete = confirm(`Deseja realmente excluir o usuário ${usuario}?`);
+            if (confirmDelete) {
+                usuarios = usuarios.filter(u => u.nome !== usuario);
+                document.querySelector(`#usuariosTable tbody tr td:contains("${usuario}")`).parentNode.remove();
+                alert(`Usuário ${usuario} excluído com sucesso!`);
+            }
+        }
+    </script>
+</body>
+</html>

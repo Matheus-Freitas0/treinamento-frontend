@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Mesa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://cms-cdn.saipos.com/assets/2023/03/10/Fale-com-um-vendedor_uid_640b7e4382273.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        main {
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            height: calc(100vh - 60px);
+            box-sizing: border-box;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            max-width: 800px;
+            width: 100%;
+            margin: 1rem;
+            text-align: center;
+            overflow-y: auto;
+            height: auto;
+        }
+
+        h2 {
+            color: #00796b;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        select, textarea, input, button {
+            width: 100%;
+            margin: 0.5rem 0;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, textarea:focus, input:focus {
+            border-color: #00796b;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 121, 107, 0.6);
+        }
+
+        .adicionais {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: space-between;
+        }
+
+        .adicionais label {
+            font-size: 0.85rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #00796b;
+            background-color: white;
+            transition: background-color 0.3s, transform 0.3s ease;
+            width: 48%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .adicionais input {
+            display: none;
+        }
+
+        .adicionais label:hover {
+            background-color: #00796b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .adicionais input:checked + label {
+            background-color: #00796b;
+            color: white;
+            border-color: #004d40;
+        }
+
+        button {
+            background: #00796b;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+            padding: 0.8rem;
+        }
+
+        button:hover {
+            background: #004d40;
+            transform: scale(1.02);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .form-group.quantity {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .form-group.quantity input {
+            max-width: 80px;
+        }
+
+        .order-list {
+            margin-top: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px; 
+            width: 100%;
+            height: 600px; 
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .order-list h3 {
+            color: #00796b;
+            margin-bottom: 1rem;
+            font-size: 1.4rem; 
+        }
+
+        .order-item {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0.6rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-item button {
+            background-color: #e53946;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-item button:hover {
+            background-color: #c62828;
+        }
+
+        .shadow-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Sistema Restaurante - Mesa
+    </header>
+    <main>
+        <section>
+            <h2>Selecionar Prato</h2>
+            <div class="form-group">
+                <label for="mesa">Número da Mesa:</label>
+                <input type="number" id="mesa" placeholder="Número da Mesa" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="prato">Prato:</label>
+                <select id="prato">
+                    <option value="" disabled selected>Escolha um prato</option>
+                    <option value="pizza">Pizza</option>
+                    <option value="hamburguer">Hambúrguer</option>
+                    <option value="sushi">Sushi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tamanho">Tamanho:</label>
+                <select id="tamanho">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="médio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select>
+            </div>
+            <div class="form-group quantity">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" min="1" max="10" value="1">
+            </div>
+            <div class="form-group">
+                <label for="observacao">Observações:</label>
+                <textarea id="observacao" placeholder="Adicione observações"></textarea>
+            </div>
+            <div class="adicionais">
+                <h3>Adicionais</h3>
+                <input type="checkbox" id="extraQueijo" value="extraQueijo">
+                <label for="extraQueijo"><span>Extra Queijo</span></label>
+
+                <input type="checkbox" id="bacon" value="bacon">
+                <label for="bacon"><span>Bacon</span></label>
+
+                <input type="checkbox" id="molhoEspecial" value="molhoEspecial">
+                <label for="molhoEspecial"><span>Molho Especial</span></label>
+
+                <input type="checkbox" id="champignon" value="champignon">
+                <label for="champignon"><span>Champignon</span></label>
+
+                <input type="checkbox" id="alho" value="alho">
+                <label for="alho"><span>Alho</span></label>
+
+                <input type="checkbox" id="tomate" value="tomate">
+                <label for="tomate"><span>Tomate</span></label>
+
+                <input type="checkbox" id="azeitona" value="azeitona">
+                <label for="azeitona"><span>Azeitona</span></label>
+
+                <input type="checkbox" id="pimentao" value="pimentao">
+                <label for="pimentao"><span>Pimentão</span></label>
+
+                <input type="checkbox" id="oregano" value="oregano">
+                <label for="oregano"><span>Orégano</span></label>
+            </div>
+            <button id="enviar">Adicionar ao Pedido</button>
+        </section>
+
+        <div class="order-list">
+            <h3>Seu Pedido</h3>
+            <div id="lista-pedido"></div>
+        </div>
+        <div class="shadow-bottom"></div>
+    </main>
+    <script>
+        const listaPedido = document.getElementById("lista-pedido");
+
+        function atualizarListaPedido() {
+            const items = JSON.parse(localStorage.getItem("pedido")) || [];
+            listaPedido.innerHTML = "";
+            items.forEach((item, index) => {
+                const divItem = document.createElement("div");
+                divItem.classList.add("order-item");
+                divItem.innerHTML = `
+                    <span>${item.prato} (${item.tamanho}) - ${item.quantidade}x</span>
+                    <span><strong>Adicionais:</strong> ${item.adicionais.join(", ")}</span>
+                    <p><strong>Observação:</strong> ${item.obs || "Nenhuma"}</p>
+                    <button onclick="removerItem(${index})">Remover</button>
+                `;
+                listaPedido.appendChild(divItem);
+            });
+        }
+
+        function adicionarAoPedido() {
+            const prato = document.getElementById("prato").value;
+            const tamanho = document.getElementById("tamanho").value;
+            const quantidade = document.getElementById("quantidade").value;
+            const obs = document.getElementById("observacao").value;
+            const adicionais = [...document.querySelectorAll(".adicionais input:checked")].map(el => el.value);
+            const mesa = document.getElementById("mesa").value;
+
+            if (!prato || !mesa) {
+                alert("Selecione um prato e o número da mesa antes de adicionar!");
+                return;
+            }
+
+            const item = {
+                mesa,
+                prato,
+                tamanho,
+                quantidade,
+                obs,
+                adicionais
+            };
+
+            const pedido = JSON.parse(localStorage.getItem("pedido")) || [];
+            pedido.push(item);
+            localStorage.setItem("pedido", JSON.stringify(pedido));
+            atualizarListaPedido();
+        }
+
+        function removerItem(index) {
+            const pedido = JSON.parse(localStorage.getItem("pedido")) || [];
+            pedido.splice(index, 1);
+            localStorage.setItem("pedido", JSON.stringify(pedido));
+            atualizarListaPedido();
+        }
+
+        document.getElementById("enviar").addEventListener("click", adicionarAoPedido);
+
+        atualizarListaPedido();
+    </script>
+</body>
+</html>
