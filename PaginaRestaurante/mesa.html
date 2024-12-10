@@ -196,8 +196,8 @@
             padding: 0.6rem;
             margin-bottom: 0.8rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         .order-item button {
@@ -223,6 +223,20 @@
             height: 50px;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
         }
+
+        @media (max-width: 768px) {
+            section, .order-list {
+                width: 90%;
+            }
+
+            .adicionais label {
+                width: 100%;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -238,7 +252,7 @@
             </div>
             <div class="form-group">
                 <label for="prato">Prato:</label>
-                <select id="prato">
+                <select id="prato" required>
                     <option value="" disabled selected>Escolha um prato</option>
                     <option value="pizza">Pizza</option>
                     <option value="hamburguer">Hambúrguer</option>
@@ -263,99 +277,76 @@
             </div>
             <div class="adicionais">
                 <h3>Adicionais</h3>
-                <input type="checkbox" id="extraQueijo" value="extraQueijo">
+                <input type="checkbox" id="extraQueijo" value="Extra Queijo">
                 <label for="extraQueijo"><span>Extra Queijo</span></label>
 
-                <input type="checkbox" id="bacon" value="bacon">
+                <input type="checkbox" id="bacon" value="Bacon">
                 <label for="bacon"><span>Bacon</span></label>
 
-                <input type="checkbox" id="molhoEspecial" value="molhoEspecial">
+                <input type="checkbox" id="molhoEspecial" value="Molho Especial">
                 <label for="molhoEspecial"><span>Molho Especial</span></label>
 
-                <input type="checkbox" id="champignon" value="champignon">
+                <input type="checkbox" id="champignon" value="Champignon">
                 <label for="champignon"><span>Champignon</span></label>
 
-                <input type="checkbox" id="alho" value="alho">
+                <input type="checkbox" id="alho" value="Alho">
                 <label for="alho"><span>Alho</span></label>
 
-                <input type="checkbox" id="tomate" value="tomate">
+                <input type="checkbox" id="tomate" value="Tomate">
                 <label for="tomate"><span>Tomate</span></label>
 
-                <input type="checkbox" id="azeitona" value="azeitona">
+                <input type="checkbox" id="azeitona" value="Azeitona">
                 <label for="azeitona"><span>Azeitona</span></label>
 
-                <input type="checkbox" id="pimentao" value="pimentao">
-                <label for="pimentao"><span>Pimentão</span></label>
-
-                <input type="checkbox" id="oregano" value="oregano">
+                <input type="checkbox" id="oregano" value="Orégano">
                 <label for="oregano"><span>Orégano</span></label>
             </div>
-            <button id="enviar">Adicionar ao Pedido</button>
+            <button id="adicionar">Adicionar Pedido</button>
         </section>
-
-        <div class="order-list">
-            <h3>Seu Pedido</h3>
-            <div id="lista-pedido"></div>
-        </div>
-        <div class="shadow-bottom"></div>
+        <section class="order-list">
+            <h3>Pedidos</h3>
+            <div id="pedidos"></div>
+        </section>
     </main>
     <script>
-        const listaPedido = document.getElementById("lista-pedido");
+        document.getElementById('adicionar').addEventListener('click', () => {
+            const mesa = document.getElementById('mesa').value;
+            const prato = document.getElementById('prato').value;
+            const tamanho = document.getElementById('tamanho').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const observacao = document.getElementById('observacao').value;
 
-        function atualizarListaPedido() {
-            const items = JSON.parse(localStorage.getItem("pedido")) || [];
-            listaPedido.innerHTML = "";
-            items.forEach((item, index) => {
-                const divItem = document.createElement("div");
-                divItem.classList.add("order-item");
-                divItem.innerHTML = `
-                    <span>${item.prato} (${item.tamanho}) - ${item.quantidade}x</span>
-                    <span><strong>Adicionais:</strong> ${item.adicionais.join(", ")}</span>
-                    <p><strong>Observação:</strong> ${item.obs || "Nenhuma"}</p>
-                    <button onclick="removerItem(${index})">Remover</button>
-                `;
-                listaPedido.appendChild(divItem);
-            });
-        }
+            const adicionais = Array.from(document.querySelectorAll('.adicionais input:checked')).map(el => el.value);
 
-        function adicionarAoPedido() {
-            const prato = document.getElementById("prato").value;
-            const tamanho = document.getElementById("tamanho").value;
-            const quantidade = document.getElementById("quantidade").value;
-            const obs = document.getElementById("observacao").value;
-            const adicionais = [...document.querySelectorAll(".adicionais input:checked")].map(el => el.value);
-            const mesa = document.getElementById("mesa").value;
-
-            if (!prato || !mesa) {
-                alert("Selecione um prato e o número da mesa antes de adicionar!");
+            if (!mesa || !prato) {
+                alert('Por favor, preencha os campos obrigatórios.');
                 return;
             }
 
-            const item = {
-                mesa,
-                prato,
-                tamanho,
-                quantidade,
-                obs,
-                adicionais
-            };
+            const pedido = document.createElement('div');
+            pedido.className = 'order-item';
+            pedido.innerHTML = `
+                <p><strong>Mesa:</strong> ${mesa}</p>
+                <p><strong>Prato:</strong> ${prato} (${tamanho})</p>
+                <p><strong>Quantidade:</strong> ${quantidade}</p>
+                <p><strong>Adicionais:</strong> ${adicionais.join(', ') || 'Nenhum'}</p>
+                <p><strong>Observações:</strong> ${observacao || 'Nenhuma'}</p>
+                <button class="remover">Remover</button>
+            `;
 
-            const pedido = JSON.parse(localStorage.getItem("pedido")) || [];
-            pedido.push(item);
-            localStorage.setItem("pedido", JSON.stringify(pedido));
-            atualizarListaPedido();
-        }
+            document.getElementById('pedidos').appendChild(pedido);
 
-        function removerItem(index) {
-            const pedido = JSON.parse(localStorage.getItem("pedido")) || [];
-            pedido.splice(index, 1);
-            localStorage.setItem("pedido", JSON.stringify(pedido));
-            atualizarListaPedido();
-        }
+            pedido.querySelector('.remover').addEventListener('click', () => {
+                pedido.remove();
+            });
 
-        document.getElementById("enviar").addEventListener("click", adicionarAoPedido);
-
-        atualizarListaPedido();
+            document.getElementById('mesa').value = '';
+            document.getElementById('prato').value = '';
+            document.getElementById('tamanho').value = 'pequeno';
+            document.getElementById('quantidade').value = 1;
+            document.getElementById('observacao').value = '';
+            document.querySelectorAll('.adicionais input:checked').forEach(el => el.checked = false);
+        });
     </script>
 </body>
 </html>
